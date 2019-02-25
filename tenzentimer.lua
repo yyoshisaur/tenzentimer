@@ -27,7 +27,7 @@ windower.register_event('action', function(act)
             local skill_name = tenzen[act.param][lang]
             local skill_duration = tenzen[act.param].duration
             local icon = tenzen[act.param].icon
-            local timer_commnad = 'timers c ""'..skill_name..'('..mob_info.name..')'..'"" '..skill_duration..' down '..icon
+            local timer_commnad = 'timers c "'..skill_name..'('..mob_info.name..')'..'" '..skill_duration..' down '..icon
             windower.send_command(timer_commnad)
         end
     end
