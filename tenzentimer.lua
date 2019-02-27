@@ -11,7 +11,7 @@ local tenzen = {
     [3251] = {id=3251,english="Amatsu: Shirahadori",japanese="白羽取り",duration=30,icon='abilities/00206.png'},
 }
 
-local bushi = 'Tenzen'
+local tenzen_name = 'Tenzen'
 local zone_sealion_id = 32
 
 windower.register_event('load', function()
@@ -22,7 +22,7 @@ windower.register_event('action', function(act)
     local mob_info = windower.ffxi.get_mob_by_id(act.actor_id)
     local zone = windower.ffxi.get_info().zone
 
-    if mob_info and zone == zone_sealion_id and mob_info.name == bushi then
+    if mob_info and zone == zone_sealion_id and mob_info.name == tenzen_name then
         if tenzen[act.param] then
             local skill_name = tenzen[act.param][lang]
             local skill_duration = tenzen[act.param].duration
@@ -35,8 +35,8 @@ end)
 
 windower.register_event('zone change', function(new_id, old_id)
     if old_id == zone_sealion_id and new_id ~= zone_sealion_id then
-        local yae_timer_name = tenzen[3186][lang]..'('..bushi..')'
-        local shira_timer_name = tenzen[3251][lang]..'('..bushi..')'
+        local yae_timer_name = tenzen[3186][lang]..'('..tenzen_name..')'
+        local shira_timer_name = tenzen[3251][lang]..'('..tenzen_name..')'
         local timer_delete_command = 'timers d '..yae_timer_name..';timers d '..shira_timer_name
         windower.send_command(timer_delete_command)
     end
